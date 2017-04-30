@@ -1,6 +1,6 @@
 # Monstercat 24/7 Title Overlay
 
-##How to use:
+## How to use:
 
 * Download the repo
 * Unpack it
