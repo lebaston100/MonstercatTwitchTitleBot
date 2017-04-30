@@ -1,0 +1,27 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/custom.css">
+<script>
+function testAnimation() {
+	var element = document.getElementById('retrigger');
+	element.style.visibility = "visible";
+	element.style.setProperty("-webkit-animation-name", "fadeinfadeout");
+}
+
+function initAnimation() {
+	var element = document.getElementById('retrigger');
+	element.addEventListener('webkitAnimationEnd', function() {
+		var element = document.getElementById('retrigger');
+		element.style.visibility = 'hidden';
+		element.style.removeProperty("-webkit-animation-name");
+	}, false);
+	testAnimation();
+}
+</script>
+<script src="js/client.js"></script>
+</head>
+<body>
+<div id="retrigger">
+<span id="text">Aktueller Titel: Das ist ein Texttext</span></div>
+</body>

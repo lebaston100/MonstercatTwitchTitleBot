@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+html {
+	height: 1080px;
+	width: 1920px;
+}
+
+body {
+	height: 1080px;
+	width: 1920px;
+	margin: 0px;
+	overflow: hidden;
+	font-family: 'Montserrat';
+}
+
+@-webkit-keyframes fadeinfadeout { 
+0% {
+	opacity: 0.0;
+}
+7% {
+	opacity: 1.0;
+}
+93% {
+	opacity: 1.0;
+}
+100% {
+	opacity: 0.0;
+}
+}
+
+#retrigger {
+	visibility: hidden;
+	/*-webkit-animation-name: fadeinfadeout;*/
+	-webkit-animation-duration: 10s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-out;
+	-webkit-animation-fill-mode: forwards;
+}
+
+#text {
+	font-size: 3em;
+}
