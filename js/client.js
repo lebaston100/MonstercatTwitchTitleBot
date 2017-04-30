@@ -1,7 +1,7 @@
 window.addEventListener("load", init, false);
 
-var oAuthToken = ""; //Paste your Twitch oAuth Token here
-var twitchUserName = ""; //Paste your Twitch username here
+var oAuthToken = "<token here>"; //Paste your Twitch oAuth Token here
+var twitchUserName = "<username here>"; //Paste your Twitch username here
 
 var socketisOpen = 0;
 var intervalID = 0;
