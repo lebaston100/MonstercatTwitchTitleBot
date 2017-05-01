@@ -5,10 +5,12 @@ var twitchUserName = "<username here>"; //Paste your Twitch username here
 
 var socketisOpen = 0;
 var intervalID = 0;
+var oldSong = "";
 
 function init() {
 	doConnect();
 	setInterval(doPing, 60000);
+	initAnimation()
 }
 
 function sendCommand(p1) {
@@ -24,12 +26,14 @@ function event(data) {
 	if (data.includes("display-name=Monstercat") && data.includes("@badges=broadcaster") && data.includes("Now Playing:") && !data.includes("http://monster.cat/Music-License")) {
 		gottext = data.substring(data.indexOf("PRIVMSG #monstercat :") + "PRIVMSG #monstercat :".length);
 		gottext = gottext.substring(gottext.indexOf("Now Playing: ") + "Now Playing: ".length);
-		gottext2 = gottext.substring(0, gottext.indexOf(" - Listen now:"));
-		if (gottext2.length > 2) {
-			gottext = gottext.substring(0, gottext.indexOf(" - Listen now:"));
+		if (gottext.indexOf(" - Listen") > 0) {
+			gottext = gottext.substring(0, gottext.indexOf(" - Listen"));
 		}
-		changeElement("text", "Aktueller Titel: " + gottext);
-		testAnimation();
+		if (gottext != oldSong) {
+			changeElement("text", "Aktueller Titel: " + gottext);
+			testAnimation();
+			oldSong = gottext;
+		}
 	}
 }
 
