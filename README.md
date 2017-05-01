@@ -5,7 +5,7 @@
 * Download the repo
 * Unpack it
 * Open the "client.js" in the "js" subfolder
-* Open [https://twitchapps.com/tmi/](https://twitchapps.com/tmi/) an click "Connect with Twitch"
+* Open [https://twitchapps.com/tmi/](https://twitchapps.com/tmi/) and click "Connect with Twitch"
 * Copy the now provided "password" (OAuth Token) an paste it into line 3 of "client.js"
 * Enter your twitch username into line 4 of "client.js"
 * Save and close "client.js"

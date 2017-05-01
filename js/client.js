@@ -21,7 +21,7 @@ function sendCommand(p1) {
 }
 
 function event(data) {
-	if (data.includes("display-name=Monstercat") && data.includes("@badges=broadcaster") && !data.includes("http://monster.cat/Music-License")) {
+	if (data.includes("display-name=Monstercat") && data.includes("@badges=broadcaster") && data.includes("Now Playing:") && !data.includes("http://monster.cat/Music-License")) {
 		gottext = data.substring(data.indexOf("PRIVMSG #monstercat :") + "PRIVMSG #monstercat :".length);
 		gottext = gottext.substring(gottext.indexOf("Now Playing: ") + "Now Playing: ".length);
 		gottext2 = gottext.substring(0, gottext.indexOf(" - Listen now:"));
