@@ -2,15 +2,14 @@ window.addEventListener("load", init, false);
 
 var oAuthToken = "<token here>"; //Paste your Twitch oAuth Token here
 var twitchUserName = "<username here>"; //Paste your Twitch username here
+var curTitleText = "Current music title:"; //The text before the song title
 
 var socketisOpen = 0;
 var intervalID = 0;
-var oldSong = "";
 
 function init() {
 	doConnect();
-	setInterval(doPing, 60000);
-	initAnimation()
+	initAnimation();
 }
 
 function sendCommand(p1) {
@@ -23,17 +22,18 @@ function sendCommand(p1) {
 }
 
 function event(data) {
+	console.log(data);
 	if (data.includes("display-name=Monstercat") && data.includes("@badges=broadcaster") && data.includes("Now Playing:") && !data.includes("http://monster.cat/Music-License")) {
 		gottext = data.substring(data.indexOf("PRIVMSG #monstercat :") + "PRIVMSG #monstercat :".length);
 		gottext = gottext.substring(gottext.indexOf("Now Playing: ") + "Now Playing: ".length);
-		if (gottext.indexOf(" - Listen") > 0) {
-			gottext = gottext.substring(0, gottext.indexOf(" - Listen"));
+		gottext2 = gottext.substring(0, gottext.indexOf(" - Listen "));
+		if (gottext2.length > 2) {
+			gottext = gottext.substring(0, gottext.indexOf(" - Listen "));
 		}
-		if (gottext != oldSong) {
-			changeElement("text", "Aktueller Titel: " + gottext);
-			testAnimation();
-			oldSong = gottext;
-		}
+		changeElement("text", curTitleText + " " + gottext.replace("\r", "").replace("\n", ""));
+		playAnimation();
+	} else if (data.includes("PING :tmi.twitch.tv")) {
+		sendCommand("PONG :tmi.twitch.tv\r\n");
 	}
 }
 
@@ -88,8 +88,4 @@ function onError(evt) {
 function doDisconnect() {
 	socketisOpen = 0;
 	websocket.close();
-}
-
-function doPing() {
-	sendCommand("PING");
 }

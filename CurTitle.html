@@ -3,24 +3,25 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/custom.css">
 <script>
-function testAnimation() {
-	var element = document.getElementById('retrigger');
+function playAnimation() {
+	var element = document.getElementById("retrigger");
 	element.style.visibility = "visible";
 	element.style.setProperty("-webkit-animation-name", "fadeinfadeout");
 }
 
 function initAnimation() {
-	var element = document.getElementById('retrigger');
-	element.addEventListener('webkitAnimationEnd', function() {
-		var element = document.getElementById('retrigger');
-		element.style.visibility = 'hidden';
+	var element = document.getElementById("retrigger");
+	element.addEventListener("webkitAnimationEnd", function() {
+		var element = document.getElementById("retrigger");
+		element.style.visibility = "hidden";
 		element.style.removeProperty("-webkit-animation-name");
 	}, false);
+	playAnimation();
 }
 </script>
 <script src="js/client.js"></script>
 </head>
 <body>
 <div id="retrigger">
-<span id="text">Aktueller Titel: Websockets by lebaston100</span></div>
+<span id="text">Current music title: Nothing</span></div>
 </body>
